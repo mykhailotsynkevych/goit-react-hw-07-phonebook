@@ -20,7 +20,6 @@ class Form extends Component {
 
     if (this.state.name !== '' && this.state.number !== '') {
       this.props.onSubmit({name, number});
-      this.props.onSave();
       this.setState({ name: '' , number: ''});
       return;
     }

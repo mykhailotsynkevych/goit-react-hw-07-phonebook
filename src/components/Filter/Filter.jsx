@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import React from "react";
-import s from './Filtr.module.css';
+import s from './Filter.module.css';
 
 // import { useSelector, useDispatch } from 'react-redux';
 // import { getFilter } from '../../redux/contacts/contacts-selectors';
 // import contactsActions from '../../redux/contacts/contacts-actions';
 
 import { connect } from 'react-redux';
-import * as todosActions from '../../redux/contacts/contacts-actions';
+import {changeFilter} from '../../redux/contacts/contacts-actions';
 
-const Filtr = ({ value, onChange }) => {
+const Filter = ({ value, onChange }) => {
   //   const value = useSelector(getFilter);
   // const dispatch = useDispatch();
     return (
@@ -30,16 +30,16 @@ const Filtr = ({ value, onChange }) => {
     );
   }
 
-Filtr.propTypes = {
-  value: PropTypes.string,
-};
+// Filter.propTypes = {
+//   value: PropTypes.string,
+// };
 
 const mapStateToProps = state => ({
   value: state.contacts.filter,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onChange: e => dispatch(todosActions.changeFilter(e.target.value)),
+  onChange: e => dispatch(changeFilter(e.target.value)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Filtr);
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

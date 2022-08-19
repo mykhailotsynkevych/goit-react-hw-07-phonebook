@@ -6,16 +6,12 @@ import { connect } from 'react-redux';
 import contactsOperations from '../redux/contacts/contacts-operations';
 
 import Form from './Form/Form';
-import Filtr from './Filtr/Filtr';
+import Filter from './Filter/Filter';
 import ContactsList from './ContactsList/ContactsList';
 
 
 
 class App extends Component {
-  // state = {
-  //   contacts: [],
-  //   filter: '',
-  // };
 
     componentDidMount() {
     this.props.fetchContacts();
@@ -28,7 +24,7 @@ class App extends Component {
         <h1>Phonebook</h1>
         <Form/>
         <h2>Contacts</h2>
-        <Filtr />
+        <Filter />
         {this.props.isLoadingTodos && <h1>Загружаем...</h1>}
         <ContactsList/>
       </>

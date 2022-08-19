@@ -39,13 +39,21 @@ const addContact = ({name, number}) => dispatch => {
     .catch(error => dispatch(addContactError(error)));
 };
 
-const deleteContact = contactId => dispatch => {
+const deleteContact = id => dispatch => {
   dispatch(deleteContactRequest());
 
   axios
-    .delete(`/todos/${contactId}`)
-    .then(() => dispatch(deleteContactSuccess(contactId)))
+    .delete(`/contacts/${id}`)
+    .then(() => dispatch(deleteContactSuccess(id)))
     .catch(error => dispatch(deleteContactError(error)));
+  
+  //   try {
+  //   const { data } = await axios.get('/contacts');
+
+  //   dispatch(fetchContactsSuccess(data));
+  // } catch (error) {
+  //   dispatch(fetchContactsError(error));
+  // }
 };
 
 const contactsOperations = {fetchContacts,
