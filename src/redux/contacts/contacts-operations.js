@@ -48,8 +48,8 @@ const deleteContact = contactId => dispatch => {
     .catch(error => dispatch(deleteContactError(error)));
 };
 
-export default {
-  fetchContacts,
+const contactsOperations = {fetchContacts,
   addContact,
-  deleteContact,
-};
+  deleteContact}
+
+export default contactsOperations;
