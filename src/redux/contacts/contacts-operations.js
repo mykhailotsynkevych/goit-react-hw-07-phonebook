@@ -46,14 +46,6 @@ const deleteContact = id => dispatch => {
     .delete(`/contacts/${id}`)
     .then(() => dispatch(deleteContactSuccess(id)))
     .catch(error => dispatch(deleteContactError(error)));
-  
-  //   try {
-  //   const { data } = await axios.get('/contacts');
-
-  //   dispatch(fetchContactsSuccess(data));
-  // } catch (error) {
-  //   dispatch(fetchContactsError(error));
-  // }
 };
 
 const contactsOperations = {fetchContacts,

@@ -1,22 +1,37 @@
 import PropTypes from 'prop-types';
 import s from './Contacts.module.css';
 import ContactsEl from './ContactsEl';
+import contactsOperations from '../../redux/contacts/contacts-operations';
 
 import React from 'react';
-import {useSelector } from 'react-redux';
+import {useSelector, useDispatch } from 'react-redux';
 
 
-const ContactsList = ({onDeleteContact }) => {
+const ContactsList = () => {
+
   const contacts = useSelector(state => state.contacts.items);
+  const filter = useSelector(state => state.contacts.filter);
+  const dispatch = useDispatch();
+  
+  const getFilteredContacts = () => {
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase().trim()),
+    );
+  };
+
+
+  const filteredContacts = getFilteredContacts();
+
+
   return (
     <div className={s.wrap}>
       <ul className={s.list}>
-        {contacts && contacts.map(({ id, name, number }) => (
-          <li key={id}>
+        {filteredContacts.map((contacts) => (
+          <li key={contacts.id}>
             <ContactsEl
-              name={name}
-              number={number}
-              onDeleteContact={() => onDeleteContact(id)}
+              name={contacts.name}
+              number={contacts.number}
+              onDeleteContact={() => dispatch(contactsOperations.deleteContact(contacts.id))}
             />
           </li>
         ))}
