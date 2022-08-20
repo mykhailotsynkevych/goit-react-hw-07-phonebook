@@ -15,7 +15,7 @@ const Filter = () => {
   return (
     <>
       <label className={s.filtr}>
-        <span> Filtr by Name </span>
+        <span className={s.inputTitle}> Filtr by Name </span>
         <input
           className={s.input}
           type="text"

@@ -23,7 +23,7 @@ p {
 
 
 .container {
-  width: 400px;
+  width: 600px;
   display: flex;
   flex-direction: column;
   margin-left: auto;
