@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import s from './Contacts.module.css';
 import ContactsEl from './ContactsEl';
-import contactsOperations from '../../redux/contacts/contacts-operations';
+import {removeContacts} from '../../redux/contacts/contacts-operations';
 
 import React from 'react';
 import {useSelector, useDispatch } from 'react-redux';
@@ -31,7 +31,7 @@ const ContactsList = () => {
             <ContactsEl
               name={contacts.name}
               number={contacts.number}
-              onDeleteContact={() => dispatch(contactsOperations.deleteContact(contacts.id))}
+              onDeleteContact={() => dispatch(removeContacts(contacts.id))}
             />
           </li>
         ))}

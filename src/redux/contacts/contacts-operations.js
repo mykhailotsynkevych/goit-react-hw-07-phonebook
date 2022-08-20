@@ -1,51 +1,39 @@
-import axios from 'axios';
-import {
-  addContactRequest,
-  addContactSuccess,
-  addContactError,
-  deleteContactRequest,
-  deleteContactSuccess,
-  deleteContactError,
-  fetchContactsRequest,
-  fetchContactsSuccess,
-  fetchContactsError,
-} from './contacts-actions';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { getContactsApi, addContactApi, deleteContactApi } from "../../components/api/mockapi";
 
-axios.defaults.baseURL = 'https://62fe470341165d66bfbc978b.mockapi.io';
+export const getContacts = createAsyncThunk(
+  'getContacts',
+  async (_, thunkApi) => {
+    try {
+      const contacts = await getContactsApi();
+      return contacts;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
 
-const fetchContacts = () => async dispatch => {
-  dispatch(fetchContactsRequest());
-  axios
-    .get('/contacts')
-    .then(({ data }) => dispatch(fetchContactsSuccess(data)))
-    .catch(error => dispatch(fetchContactsError(error)));
-};
+export const addContacts = createAsyncThunk(
+  'addContacts',
+  async (contact, rejectWithValue) => {
+    try {
+      const newContact = await addContactApi(contact);
 
-const addContact = ({name, number}) => dispatch => {
-  const contact = {
-    name,
-    number
-  };
+      return newContact;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
-  dispatch(addContactRequest());
-
-  axios
-    .post('/contacts', contact)
-    .then(({ data }) => dispatch(addContactSuccess(data)))
-    .catch(error => dispatch(addContactError(error)));
-};
-
-const deleteContact = id => dispatch => {
-  dispatch(deleteContactRequest());
-
-  axios
-    .delete(`/contacts/${id}`)
-    .then(() => dispatch(deleteContactSuccess(id)))
-    .catch(error => dispatch(deleteContactError(error)));
-};
-
-const contactsOperations = {fetchContacts,
-  addContact,
-  deleteContact}
-
-export default contactsOperations;
+export const removeContacts = createAsyncThunk(
+  'deleteContacts',
+  async (id, { rejectWithValue }) => {
+    try {
+      await deleteContactApi (id);
+      return id;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);

@@ -1,6 +1,5 @@
 import React, { useState  } from 'react';
-import { connect } from 'react-redux';
-import contactsOperations from '../../redux/contacts/contacts-operations';
+import {addContacts} from '../../redux/contacts/contacts-operations';
 import s from './Form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -30,7 +29,7 @@ const Form = () => {
       )
     )
     return alert(`${form.name} is already in contacts.`);
-    dispatch(contactsOperations.addContact(form));
+    dispatch(addContacts(form));
 
     setForm({ name: '', number: ''});
   };
@@ -70,11 +69,6 @@ const Form = () => {
       </form>
     </>
       );
-        }
-
-
-const mapDispatchToProps = dispatch => ({
-  onSubmit: ({name, number}) => dispatch(contactsOperations.addContact({name, number})),
-});
-
-export default connect(null, mapDispatchToProps)(Form);
+}
+        
+export default Form;
