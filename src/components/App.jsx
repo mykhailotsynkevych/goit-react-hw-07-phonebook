@@ -20,14 +20,14 @@ class App extends Component {
 
     render() {
     return (
-      <>
+      <div className="container">
         <h1>Phonebook</h1>
         <Form/>
         <h2>Contacts</h2>
         <Filter />
         {this.props.isLoadingTodos && <h1>Загружаем...</h1>}
         <ContactsList/>
-      </>
+      </div>
       );
         }
 };

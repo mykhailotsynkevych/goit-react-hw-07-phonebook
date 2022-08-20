@@ -17,6 +17,7 @@ const Filter = () => {
       <label className={s.filtr}>
         <span> Filtr by Name </span>
         <input
+          className={s.input}
           type="text"
           name="value"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"

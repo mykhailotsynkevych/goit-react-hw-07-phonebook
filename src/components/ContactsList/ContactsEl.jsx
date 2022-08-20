@@ -7,7 +7,7 @@ const ContactsEl = ({name, number, onDeleteContact }) => {
       <p className={s.discription}>{name}</p>
       <p className={s.discription}>{number}</p>
       <button className={s.button} onClick={onDeleteContact}>
-        Удалить
+        Delete
       </button>
     </div>
   );

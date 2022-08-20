@@ -41,6 +41,7 @@ const Form = () => {
         <label className={s.form}>
           <span> Name </span>
           <input
+            className={s.input}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -53,6 +54,7 @@ const Form = () => {
         <label className={s.form}>
           <span> Number </span>
           <input
+            className={s.input}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

@@ -25,7 +25,7 @@ const ContactsList = () => {
 
   return (
     <div className={s.wrap}>
-      <ul className={s.list}>
+      <ol className={s.list}>
         {filteredContacts.map((contacts) => (
           <li key={contacts.id}>
             <ContactsEl
@@ -35,7 +35,7 @@ const ContactsList = () => {
             />
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 };
