@@ -17,7 +17,7 @@ code {
 @keyframes changeOpacity {
   0% {
     opacity: 0;
-    scale: 0.2
+    scale: 0.2;
   }
 
   50% {
@@ -37,7 +37,6 @@ p {
   padding: 0;
 }
 
-
 .container {
   width: 600px;
   display: flex;
@@ -48,11 +47,10 @@ p {
   align-items: center;
   background-color: rgb(178, 219, 255);
   border-radius: 5px;
-  box-shadow: 0 5px 5px rgb(0 0 0 / 12%), 0 5px 5px rgb(0 0 0 / 14%), 0 5px 5px rgb(0 0 0 / 20%);
+  box-shadow: 0 5px 5px rgb(0 0 0 / 12%), 0 5px 5px rgb(0 0 0 / 14%),
+    0 5px 5px rgb(0 0 0 / 20%);
 
-
-      animation-name: changeOpacity;
-        animation-duration: 1000ms;
-        animation-timing-function: linear;
-        animation-delay: 2000ms;
+  animation-name: changeOpacity;
+  animation-duration: 750ms;
+  animation-timing-function: linear;
 }
