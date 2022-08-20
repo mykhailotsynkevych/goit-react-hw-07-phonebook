@@ -24,11 +24,22 @@ const loading = createReducer(false, {
   [removeContacts.rejected]: () => false,
 });
 
-const filter = createReducer('', {
+const filter = createReducer("", {
   [changeFilter]: (_, { payload }) => payload,
 });
 
-const error = createReducer(null, {});
+const setError = (_, { payload }) => payload;
+
+const error = createReducer(null, {
+  [getContacts.rejected]: setError,
+  [getContacts.pending]: () => null,
+
+  [addContacts.rejected]: setError,
+  [addContacts.pending]: () => null,
+
+  [removeContacts.rejected]: setError,
+  [removeContacts.pending]: () => null,
+});
 
 export default combineReducers({
   items,

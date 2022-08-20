@@ -2,6 +2,7 @@ import React, { useState  } from 'react';
 import {addContacts} from '../../redux/contacts/contacts-operations';
 import s from './Form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { getVisibleContacts } from '../../redux/contacts/contacts-selectors';
 
 
 let initialForm = {
@@ -11,7 +12,7 @@ let initialForm = {
 
 const Form = () => {
   const [form, setForm] = useState(initialForm);
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(getVisibleContacts);
   const dispatch = useDispatch();
 
   const handleChange = e => {
